@@ -1,24 +1,23 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
+import { welcome, hello, yourName, randomInteger } from '..';
 
-console.log('Welcome to the Brain Games!');
+welcome();
 console.log('Answer "yes" if number even otherwise answer "no".');
+const name = yourName();
+hello(name);
+
 const isOdd = num => (num % 2 === 0 ? 'yes' : 'no');
-const check = () => {
-  const name = readlineSync.question('\nMay I have your name? ');
-  console.log(`Hello, ${name}!\n`);
-  const guessOdd = (arr) => {
-    if (arr.length === 0) return console.log(`Congratulations, ${name}!`);
-    const item = arr[0];
-    console.log(`Question: ${item}`);
-    const actual = readlineSync.question('Your answer: ');
-    if (isOdd(item) !== actual) {
-      console.log(`${actual} is wrong answer ;(. Correct answer was ${isOdd(item)}.`);
-      return console.log(`Let's try again, ${name}!`);
-    }
-    console.log('Correct!');
-    return guessOdd(arr.slice(1));
-  };
-  return guessOdd([1, 10, 5]);
+
+const guessOdd = (acc, item) => {
+  if (acc > 3) return console.log(`Congratulations, ${name}!`);
+  console.log(`Question: ${item}`);
+  const actual = readlineSync.question('Your answer: ');
+  if (isOdd(item) !== actual) {
+    console.log(`${actual} is wrong answer ;(. Correct answer was ${isOdd(item)}.`);
+    return console.log(`Let's try again, ${name}!`);
+  }
+  console.log('Correct!');
+  return guessOdd(acc + 1, randomInteger());
 };
-check();
+guessOdd(1, randomInteger());
