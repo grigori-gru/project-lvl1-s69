@@ -4,7 +4,7 @@ export const welcome = () => console.log('Welcome to the Brain Games!');
 
 export const yourName = () => readlineSync.question('\nMay I have your name? ');
 
-export const hello = name => console.log(`Hello, ${name}!`);
+export const hello = name => console.log(`Hello, ${name}!\n`);
 
 export const randomInteger = () => {
   const rand = Math.random() * 100;
