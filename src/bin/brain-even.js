@@ -8,4 +8,4 @@ hello(name);
 
 const isOdd = num => (num % 2 === 0 ? 'yes' : 'no');
 
-guess(1, randomInteger(), isOdd());
+guess(1, randomInteger(), isOdd, name);

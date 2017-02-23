@@ -11,14 +11,14 @@ export const randomInteger = () => {
   return Math.round(rand);
 };
 
-const guess = (acc, item, func) => {
-  if (acc > 3) return console.log(`Congratulations, ${yourName()}!`);
+export const guess = (acc, item, func, name) => {
+  if (acc > 3) return console.log(`Congratulations, ${name}!`);
   console.log(`Question: ${item}`);
   const actual = readlineSync.question('Your answer: ');
   if (func(item) !== actual) {
     console.log(`${actual} is wrong answer ;(. Correct answer was ${func(item)}.`);
-    return console.log(`Let's try again, ${yourName()}!`);
+    return console.log(`Let's try again, ${name}!`);
   }
   console.log('Correct!');
-  return guess(acc + 1, randomInteger());
+  return guess(acc + 1, randomInteger(), func, name);
 };
