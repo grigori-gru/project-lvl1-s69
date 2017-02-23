@@ -1,10 +1,7 @@
 #!/usr/bin/env node
-import { welcome, hello, yourName, randomInteger, guess } from '..';
+import { welcome, randomInteger, guess } from '..';
 
-welcome();
-console.log('Answer "yes" if number even otherwise answer "no".');
-const name = yourName();
-hello(name);
+const name = welcome('Answer "yes" if number even otherwise answer "no".');
 
 const isOdd = num => (num % 2 === 0 ? 'yes' : 'no');
 
