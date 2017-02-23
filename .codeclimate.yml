@@ -2,3 +2,5 @@ engines:
   eslint:
     enabled: true
     channel: "eslint-3"
+    exclude_fingerprints:
+    - b41cc311ee69d2abf2cdde9a5c2e9d6c
