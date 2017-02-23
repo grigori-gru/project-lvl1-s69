@@ -1,0 +1,3 @@
+import { runCalcGame } from '..';
+
+runCalcGame();
