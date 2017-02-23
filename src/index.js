@@ -8,12 +8,12 @@ export const welcome = (hello) => {
   return name;
 };
 
-export const randomInteger = () => {
+const randomInteger = () => {
   const rand = Math.random() * 100;
   return Math.round(rand);
 };
 
-export const guess = (acc, item, func, name) => {
+const guess = (acc, item, func, name) => {
   if (acc > 3) return console.log(`Congratulations, ${name}!`);
   console.log(`Question: ${item}`);
   const actual = readlineSync.question('Your answer: ');
@@ -23,4 +23,11 @@ export const guess = (acc, item, func, name) => {
   }
   console.log('Correct!');
   return guess(acc + 1, randomInteger(), func, name);
+};
+
+export const runEvenGame = () => {
+  const name = welcome('Answer "yes" if number odd otherwise answer "no".');
+  const isOdd = num => (num % 2 === 0 ? 'yes' : 'no');
+
+  guess(1, randomInteger(), isOdd, name);
 };
