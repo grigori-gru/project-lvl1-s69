@@ -27,21 +27,22 @@ const guess = (acc, rand, func, name) => {
 };
 
 export const runEvenGame = () => {
+  const randNums = randomInteger;
+  const result = num => (num % 2 === 0 ? 'yes' : 'no');
   const name = welcome('Answer "yes" if number odd otherwise answer "no".');
-  const isOdd = num => (num % 2 === 0 ? 'yes' : 'no');
 
-  guess(1, randomInteger, isOdd, name);
+  guess(1, randNums, result, name);
 };
 
 export const runCalcGame = () => {
   const operations = ['-', '+', '*'];
 
-  const calcString = () => {
+  const randNums = () => {
     const operator = operations[Math.floor(Math.random() * operations.length)];
     return `${randomInteger()} ${operator} ${randomInteger()}`;
   };
 
-  const calcResult = (string) => {
+  const result = (string) => {
     const arr = string.split(' ');
     const item1 = Number(arr[0]);
     const item2 = Number(arr[2]);
@@ -53,5 +54,23 @@ export const runCalcGame = () => {
   };
 
   const name = welcome('What is the result of the expression?');
-  guess(1, calcString, calcResult, name);
+
+  guess(1, randNums, result, name);
+};
+
+export const runGcdGame = () => {
+  const randNums = () => `${randomInteger()} ${randomInteger()}`;
+
+  const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+
+  const result = (string) => {
+    const arr = string.split(' ');
+    const item1 = Number(arr[0]);
+    const item2 = Number(arr[1]);
+    return item1 > item2 ? gcd(item1, item2) : gcd(item2, item1);
+  };
+
+  const name = welcome('Find the greatest common divisor of given numbers.');
+
+  guess(1, randNums, result, name);
 };
