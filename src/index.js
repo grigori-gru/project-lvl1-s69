@@ -17,8 +17,7 @@ export const guess = (hello, rand, toResult) => {
     console.log(`Question: ${item}`);
     const actual = readlineSync.question('Your answer: ');
     if (String(toResult(item)) !== actual) {
-      console.log(`${actual} is wrong answer ;(.
-        Correct answer was ${toResult(item)}.`);
+      console.log(`${actual} is wrong answer ;(. Correct answer was ${toResult(item)}.`);
       return console.log(`Let's try again, ${name}!`);
     }
     console.log('Correct!');
