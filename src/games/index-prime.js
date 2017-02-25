@@ -2,19 +2,20 @@ import { randomInteger, guess } from '..';
 
 const randNums = randomInteger;
 
-
-const toResult = (item) => {
+const isPrime = (item) => {
   if (item < 2 || (item % 2 === 0)) {
-    return 'no';
+    return false;
   }
   const sqrtItem = Math.sqrt(item);
-  const checkPrime = (div) => {
-    if (div > sqrtItem) return 'yes';
-    return (item % div === 0) ? 'no' : checkPrime(div + 2);
+  const iter = (div) => {
+    if (div > sqrtItem) return true;
+    return (item % div === 0) ? false : iter(div + 2);
   };
 
-  return checkPrime(3);
+  return iter(3);
 };
+
+const toResult = item => (isPrime(item) ? 'yes' : 'no');
 
 const hello = '';
 
