@@ -2,14 +2,18 @@ import { randomInteger, guess } from '..';
 
 const randNums = randomInteger;
 
+
 const toResult = (item) => {
-  if (item < 2 || (item % 2 === 0)) return 'no';
+  if (item < 2 || (item % 2 === 0)) {
+    return 'no';
+  }
   const sqrtItem = Math.sqrt(item);
-  const iter = (div) => {
+  const checkPrime = (div) => {
     if (div > sqrtItem) return 'yes';
-    return item % div === 0 ? 'no' : iter(div + 2);
+    return (item % div === 0) ? 'no' : checkPrime(div + 2);
   };
-  return iter(3);
+
+  return checkPrime(3);
 };
 
 const hello = '';
