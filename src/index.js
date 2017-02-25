@@ -24,5 +24,5 @@ export const guess = (hello, rand, toResult) => {
     return iter(acc + 1, rand());
   };
 
-  return hello ? iter(1, rand()) : '';
+  return rand ? iter(1, rand()) : '';
 };
